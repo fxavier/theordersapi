@@ -2,16 +2,16 @@ package com.xavier.theordersapi.model;
 
 import lombok.Getter;
 
-public enum CustomerType {
+public enum PaymentStatus {
 
-    EMPRESA("Empresa"),
-    PARTICULAR("Particular");
+    PENDENTE("Pendente"),
+    QUITADO("Quitado"),
+    CANCELADO("Cancelado");
 
     @Getter
     private String description;
 
-
-    CustomerType(String description) {
+    PaymentStatus(String description) {
         this.description = description;
     }
 }

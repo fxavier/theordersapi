@@ -1,5 +1,6 @@
 package com.xavier.theordersapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,10 +17,10 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Product {
 
-    @Column(name = "product_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
+    @Column(name = "product_id")
     private Long productId;
 
     @NotBlank(message = "product-1")
@@ -39,6 +40,7 @@ public class Product {
     @Column(name = "new_price")
     private BigDecimal newPrice;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id"))
