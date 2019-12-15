@@ -24,35 +24,39 @@ public class Order {
     @Column(name = "order_date")
     private LocalDate orderDate;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "order_status")
+    private OrderStatus orderStatus;
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
     private Payment payment;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JoinColumn(name = "user_id")
+    private UserAccount userAccount;
 
     @ManyToOne
     @JoinColumn(name = "address_id")
     private ShippingAddress shippingAddress;
 
-    @Column(name = "total_price")
-    private BigDecimal totalPrice = BigDecimal.ZERO;
+    @Column(name = "order_total")
+    private BigDecimal orderTotal = BigDecimal.ZERO;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderIten> itens = new ArrayList<>();
+    private List<OrderItem> items = new ArrayList<>();
 
     public boolean isNew() {
         return this.orderId == null;
     }
 
-    public void addItens(List<OrderIten> itens) {
-        this.itens = itens;
-        this.itens.forEach(i -> i.setOrder(this));
+    public void addItens(List<OrderItem> items) {
+        this.items = items;
+        this.items.forEach(i -> i.setOrder(this));
     }
 
-    public BigDecimal getTotalpriceItens() {
-        return getItens().stream()
-                .map(OrderIten::getTotalPrice)
+    public BigDecimal getTotal() {
+        return getItems().stream()
+                .map(OrderItem::getSubtotal)
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
     }

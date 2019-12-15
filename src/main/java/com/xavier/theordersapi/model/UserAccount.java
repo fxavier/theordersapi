@@ -12,35 +12,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "user_account")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Customer {
+public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(name = "customer_id")
-    private Long customerId;
+    @Column(name = "user_id")
+    private Long userId;
 
-    @NotNull(message = "customer-1")
-    @Enumerated(EnumType.STRING)
-    @Column(name = "customer_type")
-    private CustomerType customerType;
-
-    @NotBlank(message = "customer-2")
+    @NotBlank(message = "user-1")
     @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank(message = "customer-3")
+    @NotBlank(message = "user-2")
     @Column(name = "last_name")
     private  String lastName;
 
-    @NotBlank(message = "customer-4")
-    @Email(message = "customer-5")
+    @NotBlank(message = "user-3")
     private String email;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
     private List<ShippingAddress> addresses = new ArrayList<>();
 
 }

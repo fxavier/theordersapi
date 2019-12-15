@@ -1,11 +1,12 @@
 
-CREATE TABLE customer(
-customer_id BIGSERIAL,
-customer_type VARCHAR(20) NOT NULL,
+CREATE TABLE user_account(
+user_id BIGSERIAL,
+email VARCHAR(100) NOT NULL,
+password VARCHAR(500) NOT NULL,
 first_name VARCHAR(50) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
-email VARCHAR(200) NOT NULL,
-PRIMARY KEY(customer_id)
+phone VARCHAR(50),
+PRIMARY KEY(user_id)
 );
 
 CREATE TABLE shipping_address(
@@ -14,8 +15,8 @@ village VARCHAR(100) NOT NULL,
 street VARCHAR(200) NOT NULL,
 number VARCHAR(20),
 city VARCHAR(50) NOT NULL,
-customer_id BIGINT NOT NULL,
+user_id BIGINT NOT NULL,
 PRIMARY KEY(address_id),
 CONSTRAINT fk_address_customer
-  FOREIGN KEY(customer_id) REFERENCES customer(customer_id)
+  FOREIGN KEY(user_id) REFERENCES user_account(user_id)
 );

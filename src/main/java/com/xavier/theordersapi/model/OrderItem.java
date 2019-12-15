@@ -7,16 +7,16 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "order_iten")
+@Table(name = "order_item")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class OrderIten {
+public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(name = "iten_id")
-    private Long itenId;
+    @Column(name = "item_id")
+    private Long orderItemId;
 
     private Integer quantity;
 
@@ -31,7 +31,10 @@ public class OrderIten {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public BigDecimal getTotalPrice() {
+
+    public BigDecimal getSubtotal() {
         return unitPrice.multiply(new BigDecimal(quantity));
     }
+
+
 }

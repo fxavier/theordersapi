@@ -24,9 +24,6 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
-    @ManyToMany(mappedBy = "categories")
-    private List<Product> products = new ArrayList<>();
-
     public boolean isNew() {
         return this.categoryId == null;
     }

@@ -1,6 +1,5 @@
 package com.xavier.theordersapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -8,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -40,11 +37,9 @@ public class Product {
     @Column(name = "new_price")
     private BigDecimal newPrice;
 
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "product_id"),
-    inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> categories = new ArrayList<>();
+    @NotNull(message = "product-5")
+    private Integer quantity;
+
 
     public boolean isNew() {
         return this.productId == null;

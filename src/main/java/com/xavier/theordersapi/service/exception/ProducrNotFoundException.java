@@ -4,6 +4,6 @@ import org.springframework.http.HttpStatus;
 
 public class ProducrNotFoundException extends BusnessException {
     public ProducrNotFoundException() {
-        super("product-6", HttpStatus.BAD_REQUEST);
+        super("product-7", HttpStatus.BAD_REQUEST);
     }
 }

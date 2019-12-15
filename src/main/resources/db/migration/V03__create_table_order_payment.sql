@@ -1,11 +1,13 @@
 CREATE TABLE orders(
 order_id BIGSERIAL,
 order_date DATE NOT NULL,
-customer_id BIGINT NOT NULL,
+order_status VARCHAR(50) NOT NULL,
+order_total NUMERIC(10, 2) NOT NULL,
+user_id BIGINT NOT NULL,
 address_id BIGINT NOT NULL,
 PRIMARY KEY(order_id),
-CONSTRAINT fk_order_customer
-  FOREIGN KEY(customer_id) REFERENCES customer(customer_id),
+CONSTRAINT fk_order_user
+  FOREIGN KEY(user_id) REFERENCES user_account(user_id),
 CONSTRAINT fk_order_address
   FOREIGN KEY(address_id) REFERENCES shipping_address(address_id)
 );
@@ -18,17 +20,22 @@ CONSTRAINT fk_payment_order
   FOREIGN KEY(order_id) REFERENCES orders(order_id)
 );
 
-CREATE TABLE payment_bank_slip(
-expire_date DATE NOT NULL,
+CREATE TABLE credit_card(
+holder_name VARCHAR(100) NOT NULL,
+card_number VARCHAR(200) NOT NULL,
+expiry_month DATE NOT NULL,
+expiry_year DATE NOT NULL,
+cvc INTEGER NOT NULL,
+order_id BIGINT NOT NULL,
+CONSTRAINT fk_order_card
+  FOREIGN KEY(order_id) REFERENCES orders(order_id)
+);
+
+
+CREATE TABLE cash(
 payment_date DATE NOT NULL,
 order_id BIGINT NOT NULL,
 CONSTRAINT fk_order_bankSlip
   FOREIGN KEY(order_id) REFERENCES orders(order_id)
 );
 
-CREATE TABLE payment_card(
-number_of_portions INTEGER NOT NULL,
-order_id BIGINT NOT NULL,
-CONSTRAINT fk_order_card
-  FOREIGN KEY(order_id) REFERENCES orders(order_id)
-);
