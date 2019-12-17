@@ -11,12 +11,13 @@ PRIMARY KEY(user_id)
 
 CREATE TABLE shipping_address(
 address_id BIGSERIAL,
-village VARCHAR(100) NOT NULL,
+village_id BIGINT NOT NULL,
 street VARCHAR(200) NOT NULL,
 number VARCHAR(20),
-city VARCHAR(50) NOT NULL,
 user_id BIGINT NOT NULL,
 PRIMARY KEY(address_id),
-CONSTRAINT fk_address_customer
-  FOREIGN KEY(user_id) REFERENCES user_account(user_id)
+CONSTRAINT fk_address_user
+  FOREIGN KEY(user_id) REFERENCES user_account(user_id),
+CONSTRAINT fk_address_village
+  FOREIGN KEY(village_id) REFERENCES village(village_id)
 );

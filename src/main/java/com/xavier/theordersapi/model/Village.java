@@ -8,23 +8,23 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "city")
+@Table(name = "village")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class City {
+public class Village {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(name = "city_id")
-    private Long cityId;
+    @Column(name = "village_id")
+    private Long villageId;
 
-    @NotBlank(message = "city-1")
-    @Column(name = "city_name")
-    private String cityName;
+    @NotBlank(message = "village-1")
+    @Column(name = "village_name")
+    private String villageName;
 
-    @NotNull(message = "city-2")
+    @NotNull(message = "village-2")
     @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @JoinColumn(name = "city_id")
+    private City city;
 }

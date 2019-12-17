@@ -1,0 +1,36 @@
+insert into category (category_id, category_name) values (1, 'Electronics');
+insert into category (category_id, category_name) values (2, 'Fashion');
+insert into category (category_id, category_name) values (3, 'Computador');
+insert into category (category_id, category_name) values (4, 'Imovel');
+insert into category (category_id, category_name) values (5, 'Telemoveis & Tablets');
+insert into category (category_id, category_name) values (6, 'Bebidas');
+insert into category (category_id, category_name) values (7, 'Cozinha');
+insert into category (category_id, category_name) values (8, 'Alimentos');
+insert into category (category_id, category_name) values (9, 'Beleza');
+insert into category (category_id, category_name) values (10, 'Saude');
+
+insert into product values (1,'Geleira', 'Marca LG', 10, 25000, 0.10, 22000,1);
+insert into product values (2,'Televisor Curve', 'Marca LG', 10, 35000, 0.10, 30000,1);
+insert into product values (3,'MackBook Pro', 'Marca Apple', 10, 75000, 0.10, 70000,3);
+insert into product values (4,'Calcas Jeans', 'Levis', 10, 5000, 0.10, 4000,2);
+
+insert into user_account (email, password, first_name, last_name, phone) values ('jlighten0@t-online.de', '0oDYqW', 'Joachim', 'Lighten', '626-553-9423');
+insert into user_account (email, password, first_name, last_name, phone) values ('mbunn1@house.gov', 'Pz5h3QX', 'Mariam', 'Bunn', '992-149-1597');
+insert into user_account (email, password, first_name, last_name, phone) values ('mfourmy2@dyndns.org', 'xtR3DS44vV', 'Melisse', 'Fourmy', '105-520-4549');
+insert into user_account (email, password, first_name, last_name, phone) values ('dguidelli3@fema.gov', 'rt77IyIqK1', 'Doralia', 'Guidelli', '850-542-9538');
+insert into user_account (email, password, first_name, last_name, phone) values ('kmaclean4@ameblo.jp', 'OiCeCHfgsEx2', 'Kirsteni', 'Maclean', '271-600-2795');
+insert into user_account (email, password, first_name, last_name, phone) values ('grigate5@addtoany.com', 'GEOMyfYb8OLN', 'Gail', 'Rigate', '912-766-3383');
+insert into user_account (email, password, first_name, last_name, phone) values ('bbunten6@mlb.com', 'ydgggJUF', 'Barnebas', 'Bunten', '854-928-3794');
+insert into user_account (email, password, first_name, last_name, phone) values ('pwretham7@hexun.com', '1ZPrbJhv', 'Phillip', 'Wretham', '623-771-5633');
+insert into user_account (email, password, first_name, last_name, phone) values ('kdudderidge8@sakura.ne.jp', 'yICzBeoFVr', 'Konstanze', 'Dudderidge', '617-262-3159');
+insert into user_account (email, password, first_name, last_name, phone) values ('ltayt9@oaic.gov.au', 'ekKMta', 'Loreen', 'Tayt', '139-613-1347');
+insert into user_account (email, password, first_name, last_name, phone) values ('hdiggina@sfgate.com', 'riC4IOt', 'Haleigh', 'Diggin', '295-112-1393');
+insert into user_account (email, password, first_name, last_name, phone) values ('mgodainb@amazon.co.jp', '2FFv5OOder', 'Maggy', 'Godain', '385-838-7108');
+insert into user_account (email, password, first_name, last_name, phone) values ('ghalmkinc@mac.com', 'RjgLPVFSoaM', 'Grayce', 'Halmkin', '712-346-1573');
+insert into user_account (email, password, first_name, last_name, phone) values ('simmd@networksolutions.com', 'Fm1dviUgSRY4', 'Spike', 'Imm', '372-375-7376');
+insert into user_account (email, password, first_name, last_name, phone) values ('hlowndsbroughe@jiathis.com', '3NXCenM', 'Haydon', 'Lowndsbrough', '520-991-8555');
+insert into user_account (email, password, first_name, last_name, phone) values ('cpetrisf@yale.edu', 'ZLrsWbbdokCc', 'Cybil', 'Petris', '707-897-3099');
+insert into user_account (email, password, first_name, last_name, phone) values ('dfransonig@google.es', 'hfmyME6H', 'Dominique', 'Fransoni', '666-323-5315');
+insert into user_account (email, password, first_name, last_name, phone) values ('tbrearleyh@parallels.com', 'FjTMh4g69vb', 'Teirtza', 'Brearley', '881-317-2039');
+insert into user_account (email, password, first_name, last_name, phone) values ('scrimini@msu.edu', 'eeOSPTD14tB', 'Saleem', 'Crimin', '310-342-9587');
+insert into user_account (email, password, first_name, last_name, phone) values ('ctolwoodj@wikispaces.com', 'MPlS3TRiZQ9', 'Cherida', 'Tolwood', '434-889-4890');

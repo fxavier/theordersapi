@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "shipping_address")
@@ -18,16 +19,16 @@ public class ShippingAddress {
     @Column(name = "address_id")
     private Long addressId;
 
-    @NotBlank(message = "address-1")
-    private String village;
+    @NotNull(message = "address-1")
+    @ManyToOne
+    @JoinColumn(name = "village_id")
+    private Village village;
 
     @NotBlank(message = "address-2")
     private String street;
 
+    @NotNull(message = "address-3")
     private String number;
-
-    @Enumerated(EnumType.STRING)
-    private City city;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

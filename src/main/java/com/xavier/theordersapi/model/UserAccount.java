@@ -24,17 +24,31 @@ public class UserAccount {
     private Long userId;
 
     @NotBlank(message = "user-1")
+    private String email;
+
+    @NotBlank(message = "user-2")
+    private String password;
+
+    @NotBlank(message = "user-3")
     @Column(name = "first_name")
     private String firstName;
 
-    @NotBlank(message = "user-2")
+    @NotBlank(message = "user-4")
     @Column(name = "last_name")
     private  String lastName;
 
-    @NotBlank(message = "user-3")
-    private String email;
+    @NotBlank(message = "user-5")
+    private String phone;
+
 
     @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
     private List<ShippingAddress> addresses = new ArrayList<>();
 
+    public boolean isNew() {
+        return this.userId == null;
+    }
+
+    public boolean exist() {
+        return this.userId != null;
+    }
 }

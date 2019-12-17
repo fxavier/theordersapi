@@ -4,27 +4,27 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @Entity
-@Table(name = "city")
+@Table(name = "shipping_table")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class City {
+public class ShippingTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(name = "city_id")
-    private Long cityId;
+    @Column(name = "table_id")
+    private Long tableId;
 
-    @NotBlank(message = "city-1")
-    @Column(name = "city_name")
-    private String cityName;
-
-    @NotNull(message = "city-2")
     @ManyToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @JoinColumn(name = "village_id")
+    private Village village;
+
+    @NotNull(message = "table-1")
+    private BigDecimal price;
+
+
 }
