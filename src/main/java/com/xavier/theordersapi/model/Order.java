@@ -49,7 +49,7 @@ public class Order {
         return this.orderId == null;
     }
 
-    public void addItens(List<OrderItem> items) {
+    public void addItems(List<OrderItem> items) {
         this.items = items;
         this.items.forEach(i -> i.setOrder(this));
     }

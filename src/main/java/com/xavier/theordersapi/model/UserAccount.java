@@ -40,7 +40,6 @@ public class UserAccount {
     @NotBlank(message = "user-5")
     private String phone;
 
-
     @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
     private List<ShippingAddress> addresses = new ArrayList<>();
 

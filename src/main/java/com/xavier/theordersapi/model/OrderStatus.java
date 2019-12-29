@@ -6,7 +6,9 @@ public enum OrderStatus {
 
     PENDENTE("Pendente"),
     CANCELADO("Cancelado"),
-    CONFIRMADO("Confirmado");
+    CONFIRMADO("Confirmado"),
+    ENTREGUE("Entregue"),
+    FECHADO("Fechado");
 
     @Getter
     private String description;
