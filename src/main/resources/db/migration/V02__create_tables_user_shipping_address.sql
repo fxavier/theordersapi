@@ -21,3 +21,4 @@ CONSTRAINT fk_address_user
 CONSTRAINT fk_address_village
   FOREIGN KEY(village_id) REFERENCES village(village_id)
 );
+

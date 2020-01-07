@@ -6,14 +6,13 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "shopping_cart")
+@Table(name = "cart")
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ShoppingCart {
+public class Cart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,25 +20,21 @@ public class ShoppingCart {
     @Column(name = "cart_id")
     private Long cartId;
 
-    @Column(name = "cart_total")
-    private BigDecimal cartTotal;
+    @Column(name = "grand_total")
+    private BigDecimal grandTotal = BigDecimal.ZERO;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserAccount userAccount;
 
-    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CartItem> cartItems = new ArrayList<>();
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<CartItem> cartItems;
 
-    public BigDecimal getTotalPrice() {
+    public BigDecimal getGrandTotal() {
         return cartItems.stream()
-                .map(CartItem::getSubTotal)
+                .map(CartItem::getSubtotal)
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
-    }
-
-    public void addItems(List<CartItem> items) {
-        this.cartItems = items;
-        cartItems.forEach(cartItem -> cartItem.setShoppingCart(this));
     }
 }

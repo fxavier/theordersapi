@@ -16,22 +16,24 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @Column(name = "item_id")
-    private Long cartItemId;
+    private Long itemId;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     private Integer quantity;
 
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    private BigDecimal subtotal;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
-    private ShoppingCart shoppingCart;
+    private Cart cart;
 
-    public BigDecimal getSubTotal() {
-        return unitPrice.multiply(new BigDecimal(quantity));
+    public BigDecimal getSubtotal() {
+        return product.getNewPrice().multiply(new BigDecimal(quantity));
     }
 }

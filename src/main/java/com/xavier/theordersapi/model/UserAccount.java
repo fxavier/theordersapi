@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,11 +38,13 @@ public class UserAccount {
     @NotBlank(message = "user-5")
     private String phone;
 
+
     @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ShippingAddress> addresses = new ArrayList<>();
 
     public boolean isNew() {
-        return this.userId == null;
+        return this.userId== null;
     }
 
     public boolean exist() {
